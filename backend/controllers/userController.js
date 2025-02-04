@@ -13,7 +13,7 @@ const registerUser = async (req, res) => {
         res.cookie('userToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
-            sameSite: 'None', // Helps prevent CSRF attacks
+            sameSite: 'none', // Helps prevent CSRF attacks
             path: '/',        // Cookie valid across entire site
             domain: '.wearvibe-frontend.vercel.app' // Optional: Use if needed for subdomains
         });
@@ -33,7 +33,7 @@ const loginUser = async (req, res) => {
         res.cookie('userToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
-            sameSite: 'None', // Helps prevent CSRF attacks
+            sameSite: 'none', // Helps prevent CSRF attacks
             path: '/',        // Cookie valid across entire site
             domain: '.wearvibe-frontend.vercel.app' // Optional: Use if needed for subdomains
         });
