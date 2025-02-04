@@ -14,6 +14,7 @@ const registerUser = async (req, res) => {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
             sameSite: 'Strict', // Helps prevent CSRF attacks
+            path: '/',        // Cookie valid across entire site
         });
         res.status(201).send("User created successfully");
     } catch (err) {
@@ -32,6 +33,7 @@ const loginUser = async (req, res) => {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
             sameSite: 'Strict', // Helps prevent CSRF attacks
+            path: '/',        // Cookie valid across entire site
         });
         res.status(200).send("Successfully logged in");
     } catch (err) {
