@@ -33,7 +33,7 @@ const loginOwner = async (req, res) => {
         res.cookie('userToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
-            sameSite: 'Strict', // Helps prevent CSRF attacks
+            sameSite: 'None', // Helps prevent CSRF attacks
             path: '/',        // Cookie valid across entire site
             domain: '.wearvibe-admin.vercel.app' // Optional: Use if needed for subdomains
         });
