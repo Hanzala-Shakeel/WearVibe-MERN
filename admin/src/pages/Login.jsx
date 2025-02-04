@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import { useAuth } from "../context/authContext";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@example.com");
+  const [password, setPassword] = useState("12345678");
   const { setIsAuthenticated } = useAuth();
 
   function handleSubmit(e) {
