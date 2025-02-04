@@ -13,9 +13,7 @@ const registerUser = async (req, res) => {
         res.cookie('userToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
-            sameSite: 'none', // Helps prevent CSRF attacks
-            path: '/',        // Cookie valid across entire site
-            domain: '.wearvibe-frontend.vercel.app' // Optional: Use if needed for subdomains
+            sameSite: 'None', // Helps prevent CSRF attacks
         });
         res.status(201).send("User created successfully");
     } catch (err) {
@@ -33,9 +31,7 @@ const loginUser = async (req, res) => {
         res.cookie('userToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
-            sameSite: 'none', // Helps prevent CSRF attacks
-            path: '/',        // Cookie valid across entire site
-            domain: '.wearvibe-frontend.vercel.app' // Optional: Use if needed for subdomains
+            sameSite: 'None', // Helps prevent CSRF attacks
         });
         res.status(200).send("Successfully logged in");
     } catch (err) {
