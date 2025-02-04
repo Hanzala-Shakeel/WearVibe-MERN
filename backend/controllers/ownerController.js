@@ -30,7 +30,7 @@ const loginOwner = async (req, res) => {
         const passwordMatch = await bcrypt.compare(req.body.password, owner.password);
         if (!passwordMatch) return res.status(400).send("email or password is incorrect");
         const token = createToken(owner); // Generate the token
-        res.cookie('userToken', token, {
+        res.cookie('ownerToken', token, {
             secure: true,     // Cookie only sent over HTTPS
             httpOnly: true,   // Cookie cannot be accessed via JavaScript
             sameSite: 'None', // Helps prevent CSRF attacks
