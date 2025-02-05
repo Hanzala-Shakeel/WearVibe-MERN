@@ -5,10 +5,12 @@ import { CartContext } from "../context/CartContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import stripeLogo from "../assets/stripe.png";
+import { useNavigate } from "react-router-dom";
 
 const CheckOut = () => {
   const { cart, setCart, calculateTotal } = useContext(CartContext);
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const navigate = useNavigate();
 
   const [formData, setformData] = useState({
     firstName: "",
@@ -40,32 +42,40 @@ const CheckOut = () => {
 
     if (orderData && paymentMethod === "cod") {
       axios
-        .post("https://wearvibe-backend.vercel.app/order/placeorder", orderData, {
-          withCredentials: true,
-        })
+        .post(
+          "https://wearvibe-backend.vercel.app/order/placeorder",
+          orderData,
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           toast.success(res.data);
           setCart([]);
           localStorage.removeItem("cart");
+          navigate("/order")
         })
         .catch((err) => toast.error(err.response.data));
     }
     if (orderData && paymentMethod === "stripe") {
-        axios
-          .post("https://wearvibe-backend.vercel.app/order/placeorderstripe", orderData, {
+      axios
+        .post(
+          "https://wearvibe-backend.vercel.app/order/placeorderstripe",
+          orderData,
+          {
             withCredentials: true,
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              const { session_url } = res.data;
-              window.location.replace(session_url);
-              // window.location = session_url;
-            }
-            else{
-              toast.error(err.response.data)
-            }
-          })
-          .catch((err) => toast.error(err.response.data));
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            const { session_url } = res.data;
+            window.location.replace(session_url);
+            // window.location = session_url;
+          } else {
+            toast.error(err.response.data);
+          }
+        })
+        .catch((err) => toast.error(err.response.data));
     }
   }
 
