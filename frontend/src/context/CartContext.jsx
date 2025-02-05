@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
           console.log("Cart synced with backend successfully");
         })
         .catch((err) => {
-          console.log("Error syncing cart with backend:", err);
+          console.log("Error syncing cart with backend", err);
         });
     }
   }, [cart, isAuthenticated]); // Sync cart when cart or isAuthenticated changes

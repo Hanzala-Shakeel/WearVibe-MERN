@@ -19,7 +19,6 @@ const Orders = () => {
       })
       .then((res) => {
         setOrders(res.data.reverse());
-        console.log(res.data);
       })
       .catch((err) => console.log(err.response.data || err));
   }
