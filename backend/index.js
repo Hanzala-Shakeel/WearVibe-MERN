@@ -9,7 +9,7 @@ const dbgr = require("debug")("development:index");
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://wearvibe-frontend.vercel.app', 'https://wearvibe-admin.vercel.app'], // Adjust to the frontend URL if different
+    origin: ['https://wearvibe-frontend.vercel.app', 'https://wearvibe-admin.vercel.app', 'https://shop-drab-chi.vercel.app'], // Adjust to the frontend URL if different
     credentials: true // Allow credentials (cookies) to be included
 }));
 
